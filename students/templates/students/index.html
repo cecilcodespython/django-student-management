@@ -37,20 +37,56 @@
         <h3 class="m-4">All Students</h3>
         <div class="row">
             <div class="col-12">
-                <div class="card bg-secondary mb-3" ms-4 me-4 mb-4>
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <h4 class="card-title">Secondary card title</h4>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
+              {% if students %}
+              <div class="card bg-secondary mb-3" ms-4 me-4 mb-4>
+                <div class="card-header">
+                  <i class="fa-regular fa-book-user"></i>Student Records
                 </div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Index Number</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">CWA</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for student in students %}
+                          <tr>
+                            <td>{{student.index_number}}</td>
+                            <td>{{student.first_name}}</td>
+                            <td>{{student.last_name}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.course}}</td>
+                            <td>{{student.cwa}}</td>
+                            <td>{{Actions}}</td>
+                          </tr>
+                          
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </p>
+              </div>
+            </div>
+              
+              {% else %}
+              <h5 class="alert alert-primary ms-4 me-4">No Student Records</h5>
+              {% endif %}
             </div>
         </div>
       </div>
       <footer class="mt-auto mb-4">
         <div class="text-center">
             <span>
-                Copyright &copy; <script>document.write(new Date().getFullYear())</script>Cecil Codes Python
+                Copyright &copy; <script>document.write(new Date().getFullYear())</script> Cecil Codes Python
             </span>
         </div>
       </footer>
